@@ -20,6 +20,20 @@
 - unsubscribe to the onAuthStateChanged callback
 - Add hardcoded links in constants.js
 - Fetch from TMDB Movies
+- custom hook for now playing movies
+- create movie slice
+- store for movies data
+- Browser Page:(Plan)
+  - MainContainer
+    - Video Bkg
+    - Video Title
+  - SecondaryContainer
+    - MoviesList \* n
+      - Movies cards \* n
+- custom hook for fetch data for trailer video
+- update store
+- add iframe - embed ytube video, make it autoplay
+- add css
 
 # Features
 

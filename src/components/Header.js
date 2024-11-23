@@ -54,12 +54,15 @@ const Header = () => {
       {user && (
         <div>
           <div className="flex">
-            <img className="w-16" src={user.photoURL} alt="user-icon" />
-            <button className="font-semibold bg-white" onClick={handleSignOut}>
+            <img className="w-10" src={user.photoURL} alt="user-icon" />
+            <button
+              className="font-semibold text-white ml-2"
+              onClick={handleSignOut}
+            >
               Sign Out
             </button>
           </div>
-          <p>({user.displayName})</p>
+          {/* <p>({user.displayName})</p> */}
         </div>
       )}
     </div>
