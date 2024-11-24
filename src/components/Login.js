@@ -65,7 +65,7 @@ const Login = () => {
         password.current.value
       )
         .then((userCredential) => {
-          alert("Logged in successfully");
+          // alert("Logged in successfully");
         })
         .catch((error) => {
           const errorCode = error.code;

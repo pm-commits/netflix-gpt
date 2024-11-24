@@ -1,5 +1,5 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -43,6 +44,10 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
+  function handlerUserClick() {
+    setShowDropdown(!showDropdown);
+  }
+
   return (
     <div className="absolute w-full px-24 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
       <img
@@ -53,16 +58,22 @@ const Header = () => {
       />
       {user && (
         <div>
-          <div className="flex">
-            <img className="w-10" src={user.photoURL} alt="user-icon" />
-            <button
-              className="font-semibold text-white ml-2"
-              onClick={handleSignOut}
-            >
-              Sign Out
+          <div className="flex items-center">
+            <img className="w-10 h-10" src={user.photoURL} alt="user-icon" />
+            <button className="text-white ml-3" onClick={handlerUserClick}>
+              ▾
             </button>
           </div>
           {/* <p>({user.displayName})</p> */}
+          {showDropdown && (
+            <ul className="border-gray-400 bg-gray-700 text-white absolute w-32">
+              <li>
+                <button className="px-2 py-2 text-sm" onClick={handleSignOut}>
+                  Sign Out
+                </button>
+              </li>
+            </ul>
+          )}
         </div>
       )}
     </div>
